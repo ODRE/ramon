@@ -1,0 +1,35 @@
+<body>
+<h1>Words</h1>
+{{> words}}
+{{> createWord}}
+</body>
+<template name="words">
+<ul>
+{{#each words}}
+  <li>{{word}}</li>
+  {{> sentences}}
+  {{> createSentence}}
+{{/each}}
+</ul>
+</template>
+
+<template name="sentences">
+  <ul>
+  {{#each sentences}}
+  <li>{{sentence}}</li>
+  {{/each}}
+  </ul>
+</template>
+
+
+<template name="createWord">
+<form>
+<input type="text" name="word" placeholder="word">
+<button>GO!</button>
+</form>
+</template>
+<template name="createSentence">
+<form>
+  <input type="text" name="sentence" placeholder="sentence"><button>GO!</button>
+  </form>
+  </template>
