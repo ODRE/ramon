@@ -1,3 +1,5 @@
 autopublish
 insecure
 meteor-platform
+twbs:bootstrap
+fezvrasta:bootstrap-material-design

@@ -1,35 +1,145 @@
 <body>
-<h1>Words</h1>
-{{> words}}
-{{> createWord}}
+  <!-- Barra de navegación -->
+  <div class="navbar navbar-default">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="javascript:void(0)">Ramón</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <form class="navbar-form navbar-left">
+              <input type="text" class="form-control col-lg-8" placeholder="Usuario / Email">
+              <input type="text" class="form-control col-lg-8" placeholder="Contraseña">
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="javascript:void(0)">Link</a></li>
+              <li class="dropdown">
+                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="javascript:void(0)">Action</a></li>
+                      <li><a href="javascript:void(0)">Another action</a></li>
+                      <li><a href="javascript:void(0)">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="javascript:void(0)">Separated link</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+
+  <p></p>
+  <div class="container">
+      <div class="panel panel-primary">
+
+        <div class="panel-body">
+
+          <!--  -->
+          <div class="row">
+            <div class="col-md-3 label label-success"><h5><b>Objeto clave</b></h5></div>
+            <div class="col-md-3 label label-default"><h5><b>Significado</b></h5></div>
+            <div class="col-md-3 label label-info"><h5><b>Significante</b></h5></div>
+            <div class="col-md-3 label label-danger"><h5><b>Forma escrita</b></h5></div>
+          </div><p></p>
+
+          {{> words}}
+
+
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">{{> createWord}}</div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+          </div>
+
+
+        </div>
+      </div>
+  </div>
 </body>
+
 <template name="words">
-<ul>
 {{#each words}}
-  <li>{{word}}</li>
-  {{> sentences}}
-  {{> createSentence}}
+
+<div class="row" role="button" data-toggle="collapse" href="#{{word}}" aria-expanded="false">
+  <div class="col-md-3"></div>
+  <div class="col-md-3 label label-default"><h5>{{word}}</h5></div>
+  <div class="col-md-3"></div>
+  <div class="col-md-3"></div>
+</div>
+
+<div class="collapse" id="{{word}}">
+  <div class="well">
+    {{> createSentence}}
+    <p></p>
+    {{> sentences}}
+  </div>
+</div>
+<p></p>
+
 {{/each}}
-</ul>
+
 </template>
 
 <template name="sentences">
   <ul>
   {{#each sentences}}
-  <li>{{sentence}}</li>
+  <div class="list-group">
+  <div class="list-group-item">
+      <div class="row-picture">
+          <i class="mdi-image-exposure-plus-1"></i>
+      </div>
+      <div class="row-content">
+          <div class="least-content">15 votos</div>
+          <h4 class="list-group-item-heading">{{sentence}}</h4>
+          <div class="list-group-separator"></div>
+      </div>
+  </div>
+  </div>
   {{/each}}
   </ul>
 </template>
 
 
 <template name="createWord">
-<form>
-<input type="text" name="word" placeholder="word">
-<button>GO!</button>
-</form>
+  <form>
+  <input class="form-control floating-label"  type="text" name="word" placeholder="Nuevo significado">
+  </form>
+
+
+
+
+
+    <!-- Button trigger modal
+    <span type="button" class="glyphicon glyphicon-plus" aria-hidden="true" data-toggle="modal" data-target="#NuevaPalabra"></span>
+
+  <div class="modal fade" id="NuevaPalabra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content panel panel-info">
+        <div class="panel-heading">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">¿Que palabra quieres aprender ahora?</h4>
+        </div>
+        <div class="panel-body">
+          <form>
+          <input class="form-control floating-label"  type="text" name="word" placeholder="Escribe aquí la palabra">
+          <div class="modal-footer"><button type="button" class="btn btn-info" data-dismiss="modal">Añadir</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+
+
+
 </template>
 <template name="createSentence">
 <form>
-  <input type="text" name="sentence" placeholder="sentence"><button>GO!</button>
+  <input class="form-control floating-label" type="text" name="sentence" placeholder="Nueva oración inverosimil">
   </form>
   </template>
