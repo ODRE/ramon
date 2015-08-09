@@ -2,4 +2,7 @@ autopublish
 insecure
 meteor-platform
 twbs:bootstrap
+ian:accounts-ui-bootstrap-3
+accounts-password
 fezvrasta:bootstrap-material-design
+fezvrasta:bootstrap-material-design-fullpalette

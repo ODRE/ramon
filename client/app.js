@@ -1,8 +1,15 @@
 Template.words.helpers({
   words: function() {
     return Words.find();
-  }
+},
+
 });
+
+Template.word.helpers({
+    username: function() {
+        return Meteor.users.findOne(this.user).username;
+    }
+})
 
 Template.sentences.helpers({
   sentences: function() {
@@ -15,10 +22,14 @@ Template.createWord.events({
     e.preventDefault();
     var word = {
       word: $(e.target).find('[name=word]').val(),
-      language: 'es'
+      objet: $(e.target).find('[name=word]').val(),
+      word: $(e.target).find('[name=word]').val(),
+      word: $(e.target).find('[name=word]').val(),
+      language: 'es',
+      user: Meteor.userId()
     };
     $(e.target).find('[name=word]').val('');
-    
+
     Words.insert(word);
   }
 });
@@ -28,10 +39,11 @@ Template.createSentence.events({
     e.preventDefault();
     var sentence = {
       sentence: $(e.target).find('[name=sentence]').val(),
-      word: this._id
+      word: this._id,
+      user: Meteor.userId()
     };
     $(e.target).find('[name=sentence]').val('');
-    
+
     Sentences.insert(sentence);
   }
 });
