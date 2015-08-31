@@ -21,14 +21,14 @@ Template.createWord.events({
   'submit form': function(e) {
     e.preventDefault();
     var word = {
-      word: $(e.target).find('[name=word]').val(),
-      objet: $(e.target).find('[name=word]').val(),
-      word: $(e.target).find('[name=word]').val(),
-      word: $(e.target).find('[name=word]').val(),
-      language: 'es',
+      translations: {
+          en: $(e.target).find('[name=en]').val(),
+          es: $(e.target).find('[name=es]').val()
+      },
       user: Meteor.userId()
     };
-    $(e.target).find('[name=word]').val('');
+    $(e.target).find('[name=en]').val('');
+    $(e.target).find('[name=es]').val('');
 
     Words.insert(word);
   }
@@ -40,7 +40,9 @@ Template.createSentence.events({
     var sentence = {
       sentence: $(e.target).find('[name=sentence]').val(),
       word: this._id,
-      user: Meteor.userId()
+      user: Meteor.userId(),
+      word_language: 'es',
+      sentence_language: 'es'
     };
     $(e.target).find('[name=sentence]').val('');
 
